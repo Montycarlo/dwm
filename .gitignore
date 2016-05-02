@@ -2,3 +2,4 @@
 *.swo
 *.swp
 src/dwm
+src/config.h
