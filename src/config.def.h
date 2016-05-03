@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+
 /* appearance */
 static const char *fonts[] = {
 	"Inconsolata:size=11"
@@ -43,7 +44,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask // Mod1Mask is left-alt, Mod4Mask is Apple key
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -56,12 +57,15 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", "-e", "/usr/bin/fish", NULL };
+static const char *termcmd[]  = { "urxvt", "-e", "/bin/bash", NULL };
+//static const char *termcmd[]  = { "urxvt", "-e", "/usr/bin/fish", NULL };
+static const char *imgTaker[] = { "screen.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,						            XK_Return, spawn,          {.v = termcmd } },//|ShiftMask
+	{ MODKEY|ShiftMask,	            XK_Return, spawn,          {.v = termcmd } },//
+	{ MODKEY,						            XK_o,			 spawn,          {.v = imgTaker } },//|ShiftMask
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
