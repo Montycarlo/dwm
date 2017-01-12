@@ -57,7 +57,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", "-e", "/bin/bash", NULL };
+static const char *termcmd[]  = { "urxvt", "-e", "/bin/fish", NULL };
+static const char *nautcmd[]  = { "nautilus", NULL };
 //static const char *termcmd[]  = { "urxvt", "-e", "/usr/bin/fish", NULL };
 static const char *imgTaker[] = { "screen.sh", NULL };
 
@@ -66,6 +67,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	            XK_Return, spawn,          {.v = termcmd } },//
 	{ MODKEY,						            XK_o,			 spawn,          {.v = imgTaker } },//|ShiftMask
+	{ MODKEY,						            XK_e,			 spawn,          {.v = nautcmd } },//|ShiftMask
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
